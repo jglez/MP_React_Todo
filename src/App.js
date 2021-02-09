@@ -19,16 +19,27 @@ class App extends Component {
     })
   }
 
-  handleSubmit = evt => {
+  addTodo = evt => {
     evt.preventDefault()
 
+    console.log(evt.target.value)
+
+    // this.setState({
+    //   todos: [...this.state.todos, evt.target.value]
+    // })
+  }
+
+  clearCompleted = () => {
+    // If the completed property is not equal to false, remove it from the clearedTodos array
+    const clearedTodos = this.state.todos.filter(todo => todo.completed === false)
+
     this.setState({
-      inputValue: 'NEW INPUT'
+      todos: clearedTodos
     })
   }
 
   toggleCompleted = (clickedTodoId) => {
-    console.log('Click')
+
     this.setState({
       // todos is an array, so we need to recreate the array, plus update one object within the array
       // We're using .map() because it returns a new array
@@ -60,10 +71,14 @@ class App extends Component {
         <TodoForm
           inputValue={this.state.inputValue}
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          addTodo={this.addTodo}
         />
 
-        <TodoList todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
+        <TodoList
+          todos={this.state.todos}
+          toggleCompleted={this.toggleCompleted}
+          clearCompleted={this.clearCompleted}
+        />
 
       </div>
     );

@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class TodoForm extends Component {
   render() {
-    const { inputValue, handleChange, handleSubmit } = this.props
+    const { inputValue, handleChange, addTodo } = this.props
 
     return (
       <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={addTodo}>
           <input
             name='todo'
             type='text'

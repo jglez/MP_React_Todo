@@ -5,7 +5,7 @@ import Todo from './Todo'
 
 class TodoList extends Component {
   render() {
-    const { todos, toggleCompleted } = this.props
+    const { todos, toggleCompleted, clearCompleted } = this.props
 
     return (
       <>
@@ -21,6 +21,8 @@ class TodoList extends Component {
             />
           )
         })}
+
+        <button onClick={clearCompleted}>Clear</button>
 
       </>
     )
